@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:movies_app/features/main/home/data/model/movies_response.dart';
+import 'package:movies_app/features/main/home/data/model/news_response.dart';
 
-import '../../domain/movies_repository.dart';
+import '../../domain/news_repository.dart';
 
 
 part 'home_event.dart';
@@ -17,10 +17,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<GetMoviesEvent>(_getMovie);
   }
 
-  final _moviesRepository = MoviesRepository();
+  final _newsRepository = NewsRepository();
 
   Future<void> _getMovie(GetMoviesEvent event, Emitter<HomeState> emit) async {
-    final result = await _moviesRepository.getMovies();
-    emit(state.copyWith(getMovieResponse: result));
+    emit(state.copyWith(getStatus: Status.loading));
+    final result = await _newsRepository.getMovies();
+    emit(state.copyWith(getMovieResponse: result,getStatus: Status.success));
   }
 }

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/features/main/bloc/main_bloc.dart';
 import 'package:movies_app/features/main/home/presintation/home_page.dart';
-import 'package:movies_app/features/main/play/play_movies_page.dart';
+import 'package:movies_app/features/main/movie/movie_page.dart';
+
 
 
 class MainPage extends StatelessWidget {
@@ -15,9 +16,9 @@ class MainPage extends StatelessWidget {
         return Scaffold(
           body: IndexedStack(
             index: state.bottomMenu.index,
-            children:const  [
+            children:  [
              HomePage(),
-              PlayMoviesPage()
+              MoviesPage()
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(

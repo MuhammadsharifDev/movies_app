@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/features/main/home/presintation/bloc/home_bloc.dart';
 
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -13,33 +12,55 @@ class HomePage extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: const Color(0xff15141F),
-          body: SafeArea(
-            child: Padding(
-                padding: const EdgeInsets.only(left: 24, right: 24),
-                child: Column(
-                  children: [
-                    SizedBox(height: media.size.height * 50 / 812,),
-                    SizedBox(
-                      height: media.size.height * 191 / 812,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            width: media.size.width * 327 / 375,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                color: Colors.blue
-                            ),
-                            child:Image.network(state.getMovieResponse?.results?[index].backdropPath??'')
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                )
-            ),
-          ),
+          body: state.getStatus == Status.loading
+              ? const Center(child: CircularProgressIndicator())
+              : SafeArea(
+                  child: ListView.builder(
+                    itemCount: state.getMovieResponse?.articles?.length,
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      var response = state.getMovieResponse?.articles?[index];
+                      return Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: SizedBox(
+                          height: media.size.height * 350 / 812,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: media.size.height * 200 / 812,
+                                width: double.infinity,
+                                child: Image.network(
+                                  response?.urlToImage ?? '',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Text(
+                                response?.title ?? '',
+                                style: const TextStyle(
+                                    color: Colors.white, fontSize: 15),
+                              ),
+                              Container(
+                                height: media.size.height * 25 / 812,
+                                width: media.size.width * 80 / 360,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Colors.deepOrange),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    response?.source?.name ?? '',
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
         );
       },
     );

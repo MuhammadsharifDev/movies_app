@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PlayMoviesPage extends StatelessWidget {
-  const PlayMoviesPage({super.key});
+class MoviesPage extends StatelessWidget {
+  const MoviesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,3 +10,4 @@ class PlayMoviesPage extends StatelessWidget {
     );
   }
 }
+
