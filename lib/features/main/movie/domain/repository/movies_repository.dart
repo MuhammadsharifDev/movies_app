@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:movies_app/core/const.dart';
 import 'package:movies_app/core/server_error.dart';
 import 'package:movies_app/features/main/home/data/model/news_response.dart';
+import 'package:movies_app/features/main/movie/data/model/get_search.dart';
 import 'package:movies_app/features/main/movie/data/model/movie_response.dart';
 import 'package:movies_app/features/main/movie/data/model/movies_response.dart';
 
@@ -51,6 +52,22 @@ class MoviesRepository{
     }
   }
 
+
+  Future<GetSearchMoviesResponse> getSearchResults(String value) async {
+    try {
+      final response = await dio.get<dynamic>(
+        'https://api.kinopoisk.dev/v1.2/movie/search?query=$value',
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return GetSearchMoviesResponse.fromJson(response.data);
+      }
+      throw ServerException.fromJson(response.data);
+    } on DioException catch (e) {
+      throw ServerException.fromJson(e.response?.data);
+    } on FormatException {
+      throw ServerException(message: 'Something went wrong!');
+    }
+  }
 
 }
 

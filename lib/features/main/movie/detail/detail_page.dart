@@ -46,7 +46,6 @@ class _DetailPageState extends State<DetailPage> {
                         physics: const BouncingScrollPhysics(),
                         itemCount: 5,
                         itemBuilder: (context, index) {
-
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
@@ -54,21 +53,14 @@ class _DetailPageState extends State<DetailPage> {
                               color: Colors.white,
                               child: ListTile(
                                 leading:Container(
-                                  width: 50,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                    BorderRadius.circular(5),
-                                    image: DecorationImage(
-                                        image: NetworkImage(state.movie?.persons?[index].photo??''),fit: BoxFit.fill),
-                                  ),
+                                  width: 60,
+                                  color: Colors.red,
+                                  child: Image.network(state.movie?.persons?[index].photo.toString()??'',fit: BoxFit.fill,),
                                 ),
-                                title: Text(
-                                  state.movie?.persons?[index].name ?? '',
-                                ),
+                                title: Text(state.movie?.persons?[index].name ??'' ),
                               ),
-                            ),
-                          );
+                              ),
+                            );
                         },
                       ),
                     )

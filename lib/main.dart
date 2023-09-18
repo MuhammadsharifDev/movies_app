@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       providers: [
       BlocProvider(create: (context) => MainBloc(),),
         BlocProvider(create: (context) => HomeBloc()..add(GetNewsEvent()),),
-        BlocProvider(create: (context) => MovieBloc()..add(GetMoviesEvent()),),
+        BlocProvider(create: (context) => MovieBloc()..add(const GetMoviesEvent()),),
       ],
       child:   MaterialApp(
         debugShowCheckedModeBanner: false,
