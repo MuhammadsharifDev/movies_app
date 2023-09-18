@@ -31,7 +31,7 @@ class MainPage extends StatelessWidget {
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.play_circle), label: 'Bag'),
+                  icon: Icon(Icons.play_circle), label: 'Movie'),
 
 
 

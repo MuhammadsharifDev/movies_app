@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/features/main/bloc/main_bloc.dart';
 import 'package:movies_app/features/main/home/presintation/bloc/home_bloc.dart';
 import 'package:movies_app/features/main/main_page.dart';
+import 'package:movies_app/features/main/movie/bloc/movie_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
       BlocProvider(create: (context) => MainBloc(),),
-        BlocProvider(create: (context) => HomeBloc()..add(GetMoviesEvent()),),
+        BlocProvider(create: (context) => HomeBloc()..add(GetNewsEvent()),),
+        BlocProvider(create: (context) => MovieBloc()..add(GetMoviesEvent()),),
       ],
       child:   MaterialApp(
         debugShowCheckedModeBanner: false,

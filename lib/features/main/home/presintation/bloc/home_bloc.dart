@@ -14,12 +14,12 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(const HomeState()) {
-    on<GetMoviesEvent>(_getMovie);
+    on<GetNewsEvent>(_getNew);
   }
 
   final _newsRepository = NewsRepository();
 
-  Future<void> _getMovie(GetMoviesEvent event, Emitter<HomeState> emit) async {
+  Future<void> _getNew(GetNewsEvent event, Emitter<HomeState> emit) async {
     emit(state.copyWith(getStatus: Status.loading));
     final result = await _newsRepository.getNews();
     emit(state.copyWith(getMovieResponse: result,getStatus: Status.success));

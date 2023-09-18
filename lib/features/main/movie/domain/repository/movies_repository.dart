@@ -8,7 +8,7 @@ import 'package:movies_app/features/main/movie/data/model/movies_response.dart';
 class MoviesRepository{
   final dio=Dio()..options=BaseOptions(
     headers:  {
-      'X-API-KEY': 'Q694VGC-Q4F4SRS-HHJ6VS2-AT2NXWQ'
+      'X-API-KEY': '297H19Z-RWW4FZ0-HG3BC5Q-WG5VDC2'
     },
     contentType: 'application/json',
     sendTimeout: const Duration(seconds: 30),
