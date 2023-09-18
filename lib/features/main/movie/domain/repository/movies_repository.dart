@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:movies_app/core/const.dart';
 import 'package:movies_app/core/server_error.dart';
 import 'package:movies_app/features/main/home/data/model/news_response.dart';
+import 'package:movies_app/features/main/movie/data/model/movie_response.dart';
+import 'package:movies_app/features/main/movie/data/model/movies_response.dart';
 
 class MoviesRepository{
   final dio=Dio()..options=BaseOptions(
@@ -20,16 +23,34 @@ class MoviesRepository{
       ),
     ],
   );
-  Future<GetMovieResponse> getMovie()async{
+  Future<GetMoviesResponse> getMovies()async{
     try{
       final response=await dio.get('https://api.kinopoisk.dev/v1.3/movie?page=1&limit=10');
       if(response.statusCode==200 || response.statusCode==201){
-        return GetMovieResponse.fromJson(response.data);
+        return GetMoviesResponse.fromJson(response.data);
       }
   throw ServerException.fromJson(response.data);
     }on DioException catch(e){
       throw ServerException.fromJson(e.response?.data);
     }
   }
+
+  Future<GetMovieResponse> getMovie(String id) async {
+    try {
+      final response = await dio.get<dynamic>(
+        '${MovieUrl.movieUrl}/v1.3/movie/$id',
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return GetMovieResponse.fromJson(response.data);
+      }
+      throw ServerException.fromJson(response.data);
+    } on DioException catch (e) {
+      throw ServerException.fromJson(e.response?.data);
+    } on FormatException {
+      throw ServerException(message: 'AnyThings wrong!');
+    }
+  }
+
+
 }
 

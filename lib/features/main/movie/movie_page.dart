@@ -30,6 +30,7 @@ class MoviesPage extends StatelessWidget {
                 padding: const EdgeInsets.all(4.0),
                 child: Container(
                   color: Colors.deepPurple,
+                  child: Image.network(''),
                 ),
               );
             },));

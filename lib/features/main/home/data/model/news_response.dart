@@ -1,11 +1,11 @@
-class GetMovieResponse {
+class NewsResponse {
   String? status;
   int? totalResults;
   List<Articles>? articles;
 
-  GetMovieResponse({this.status, this.totalResults, this.articles});
+  NewsResponse({this.status, this.totalResults, this.articles});
 
-  GetMovieResponse.fromJson(Map<String, dynamic> json) {
+  NewsResponse.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     totalResults = json['totalResults'];
     if (json['articles'] != null) {

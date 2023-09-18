@@ -2,12 +2,12 @@ part of 'home_bloc.dart';
 
 @immutable
 class HomeState extends Equatable {
-  final GetMovieResponse? getMovieResponse;
+  final NewsResponse? getMovieResponse;
   final Status? getStatus;
 
   const HomeState({this.getMovieResponse, this.getStatus});
 
-  HomeState copyWith({GetMovieResponse? getMovieResponse, Status? getStatus}) {
+  HomeState copyWith({NewsResponse? getMovieResponse, Status? getStatus}) {
     return HomeState(
         getMovieResponse: getMovieResponse ?? this.getMovieResponse,
         getStatus: getStatus ?? this.getStatus);

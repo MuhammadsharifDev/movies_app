@@ -21,7 +21,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _getMovie(GetMoviesEvent event, Emitter<HomeState> emit) async {
     emit(state.copyWith(getStatus: Status.loading));
-    final result = await _newsRepository.getMovies();
+    final result = await _newsRepository.getNews();
     emit(state.copyWith(getMovieResponse: result,getStatus: Status.success));
   }
 }
