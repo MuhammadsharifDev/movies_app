@@ -26,27 +26,46 @@ class MoviesPage extends StatelessWidget {
               itemCount: state.movies?.docs?.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                crossAxisSpacing: 1,
-                mainAxisSpacing: 1,
-                childAspectRatio: (1 / 1.5),
+                crossAxisSpacing: 2,
+                mainAxisSpacing: 2,
+                childAspectRatio: (1 / 1.9),
               ),
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>  DetailPage(image: state.movies?.docs?[index].poster?.previewUrl??'',),
+                  child: Card(
+                    color: const Color(0xff15141F),
+                    elevation: 10,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => DetailPage()),
+                            );
+                            context.read<MovieBloc>().add(GetMovieIdEvent(
+                                state.movies?.docs?[index].id.toString() ?? ''));
+                          },
+                          child: Image.network(
+                            state.movies?.docs?[index].poster?.previewUrl ?? "",
+                            fit: BoxFit.fill,
+                          ),
                         ),
-                      );
-                      context.read<MovieBloc>().add(GetMovieEvent(
-                          state.movie?[index].id.toString() ?? ''));
-                    },
-                    child: Image.network(
-                      state.movies?.docs?[index].poster?.previewUrl ?? "",
-                      fit: BoxFit.fill,
+                        Text(
+                          'Название: ${state.movies?.docs?[index].name ?? ''}',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          'Год: ${state.movies?.docs?[index].year ?? ''}',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          'Рейтинг: ${state.movies?.docs?[index].rating?.imdb ?? ''}',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ],
                     ),
                   ),
                 );

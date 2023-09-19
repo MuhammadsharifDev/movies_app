@@ -3,22 +3,20 @@ part of 'movie_bloc.dart';
 @immutable
 class MovieState extends Equatable {
   final GetMoviesResponse? movies;
-  final GetMovieResponse? movie;
-  final List<Docs>? searchMovies;
 
-  const MovieState({this.movies,this.movie,this.searchMovies});
+final MovieResponse? movie;
+  const MovieState({this.movies,this.movie});
 
   MovieState copyWith({
     GetMoviesResponse? movies,
-    GetMovieResponse? movie,
-    List<Docs>? searchMovies
+    MovieResponse? movie
   }) {
     return MovieState(
-        movies: movies ?? this.movies,searchMovies: searchMovies??this.searchMovies
-
+        movies: movies ?? this.movies,
+      movie: movie??this.movie,
     );
   }
 
   @override
-  List<Object?> get props => [movies,movie,searchMovies];
+  List<Object?> get props => [movies,movie];
 }

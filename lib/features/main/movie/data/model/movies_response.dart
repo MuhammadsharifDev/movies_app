@@ -21,7 +21,7 @@ class GetMoviesResponse {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (docs != null) {
       data['docs'] = docs!.map((v) => v.toJson()).toList();
     }
@@ -108,7 +108,7 @@ class Docs {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (externalId != null) {
       data['externalId'] = externalId!.toJson();
     }
@@ -160,7 +160,7 @@ class ExternalId {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['kpHD'] = kpHD;
     data['imdb'] = imdb;
     data['tmdb'] = tmdb;
@@ -191,7 +191,7 @@ class Rating {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['kp'] = kp;
     data['imdb'] = imdb;
     data['filmCritics'] = filmCritics;
@@ -224,7 +224,7 @@ class Votes {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['kp'] = kp;
     data['imdb'] = imdb;
     data['filmCritics'] = filmCritics;
@@ -246,7 +246,7 @@ class Poster {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['url'] = url;
     data['previewUrl'] = previewUrl;
     return data;
@@ -263,7 +263,7 @@ class Genres {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['name'] = name;
     return data;
   }
@@ -283,7 +283,7 @@ class Names {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['name'] = name;
     data['language'] = language;
     data['type'] = type;
@@ -301,7 +301,7 @@ class Logo {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['url'] = url;
     return data;
   }
@@ -322,7 +322,7 @@ class Watchability {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (items != null) {
       data['items'] = items!.map((v) => v.toJson()).toList();
     }
@@ -344,7 +344,7 @@ class Items {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['name'] = name;
     if (logo != null) {
       data['logo'] = logo!.toJson();
