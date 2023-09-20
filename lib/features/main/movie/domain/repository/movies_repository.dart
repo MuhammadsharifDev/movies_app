@@ -22,9 +22,11 @@ class MoviesRepository{
         ),
       ],
     );
+
+
   Future<GetMoviesResponse> getMovies() async {
     try {
-      final response = await dio.get<dynamic>(
+      final response = await dio.get(
         'https://api.kinopoisk.dev/v1.3/movie?page=1&limit=10',
       );
       if (response.statusCode == 200 || response.statusCode == 201) {

@@ -21,6 +21,8 @@ class FilmsListWidget extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
                 height: media.height * 50 / 812,
+
+
                 child: Column(
                   children: [
                     SizedBox(
@@ -33,6 +35,20 @@ class FilmsListWidget extends StatelessWidget {
                                 builder: (context) =>
                                     DetailPage(),
                               ));
+
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
+                          print(state.movie?.videos?.trailers??'');
                           context.read<MovieBloc>().add(
                               GetMovieIdEvent(state.movie
                                   ?.similarMovies?[index].id
@@ -55,11 +71,9 @@ class FilmsListWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      state.movie?.similarMovies?[index].name ??
-                          '',
-                      style:
-                      const TextStyle(color: Colors.white),
-                    )
+                      state.movie?.similarMovies?[index].name ?? '',
+                      style: const TextStyle(color: Colors.white),
+                    ),
                   ],
                 ),
               ),
