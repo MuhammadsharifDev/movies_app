@@ -47,6 +47,8 @@ class MoviesPage extends StatelessWidget {
                             );
                             context.read<MovieBloc>().add(GetMovieIdEvent(
                                 state.movies?.docs?[index].id.toString() ?? ''));
+                            print(state.movie?.videos?.trailers??'');
+
                           },
                           child: Image.network(
                             state.movies?.docs?[index].poster?.previewUrl ?? "",

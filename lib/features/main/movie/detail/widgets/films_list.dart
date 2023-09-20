@@ -36,19 +36,6 @@ class FilmsListWidget extends StatelessWidget {
                                     DetailPage(),
                               ));
 
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
-                          print(state.movie?.videos?.trailers??'');
                           context.read<MovieBloc>().add(
                               GetMovieIdEvent(state.movie
                                   ?.similarMovies?[index].id
@@ -64,15 +51,11 @@ class FilmsListWidget extends StatelessWidget {
                               '',
                           fit: BoxFit.fitHeight,
                           placeholder: (context, url) =>
-                          const CircularProgressIndicator(),
+                           const Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) =>
                           const Icon(Icons.error),
                         ),
                       ),
-                    ),
-                    Text(
-                      state.movie?.similarMovies?[index].name ?? '',
-                      style: const TextStyle(color: Colors.white),
                     ),
                   ],
                 ),

@@ -15,10 +15,10 @@ class ActorsListWidget extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           itemCount: state.movie?.persons?.length,
           itemBuilder: (context, index) {
-            return Container(
+            return SizedBox(
               width: 230,
               child: ListTile(
-                leading: Container(
+                leading: SizedBox(
                   width: 60,
                   child: CachedNetworkImage(
                     imageUrl:
@@ -26,7 +26,7 @@ class ActorsListWidget extends StatelessWidget {
                         '',
                     fit: BoxFit.fitWidth,
                     placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
+                    const Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) =>
                     const Icon(Icons.error),
                   ),

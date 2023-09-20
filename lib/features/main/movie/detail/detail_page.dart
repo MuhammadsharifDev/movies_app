@@ -2,9 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/features/main/movie/bloc/movie_bloc.dart';
+import 'package:movies_app/features/main/movie/detail/trailer_video_page/trailer_page.dart';
 import 'package:movies_app/features/main/movie/detail/widgets/actors_list.dart';
 import 'package:movies_app/features/main/movie/detail/widgets/films_list.dart';
-
 
 class DetailPage extends StatefulWidget {
   const DetailPage({
@@ -16,12 +16,11 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    backgroundColor: const Color(0xff15141F),
-    body: BlocBuilder<MovieBloc, MovieState>(
-      builder: (context, state) {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xff15141F),
+      body: BlocBuilder<MovieBloc, MovieState>(builder: (context, state) {
         return CustomScrollView(
           slivers: [
             SliverAppBar(
@@ -33,6 +32,17 @@ Widget build(BuildContext context) {
                     Icons.arrow_back,
                     color: Colors.orange,
                   )),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TrailerPage()));
+                  },
+                  child: Text('Trailer'),
+                ),
+              ],
               centerTitle: true,
               backgroundColor: const Color(0xff15141F),
               expandedHeight: 200,
@@ -42,12 +52,12 @@ Widget build(BuildContext context) {
                 background: Stack(children: [
                   CachedNetworkImage(
                     imageUrl:
-                    state.movie?.backdrop?.previewUrl.toString() ?? '',
+                        state.movie?.backdrop?.previewUrl.toString() ?? '',
                     fit: BoxFit.fitHeight,
                     placeholder: (context, url) =>
-                    const Center(child: CircularProgressIndicator()),
+                        const Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) =>
-                    const Icon(Icons.error),
+                        const Icon(Icons.error),
                   ),
                 ]),
               ),
@@ -99,9 +109,7 @@ Widget build(BuildContext context) {
             ),
           ],
         );
-      },
-    ),
-  );
-}
-
+      }),
+    );
+  }
 }
