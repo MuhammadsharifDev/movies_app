@@ -25,6 +25,11 @@ class _TrailerPageState extends State<TrailerPage> {
    );
     super.initState();
   }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
 
   @override
