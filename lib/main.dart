@@ -6,6 +6,7 @@ import 'package:movies_app/features/auth/login/login_page.dart';
 import 'package:movies_app/features/main/bloc/main_bloc.dart';
 import 'package:movies_app/features/main/main_page.dart';
 import 'package:movies_app/features/main/movie/bloc/movie_bloc.dart';
+import 'package:movies_app/features/main/movie/movie_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                 useMaterial3: true,
               ),
-              home:LoginPage()
+              home:const MoviesPage(),
           ),
         ),
       ),
