@@ -8,7 +8,6 @@ class MoviesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: const Color(0xff15141F),
         appBar: AppBar(
@@ -22,7 +21,9 @@ class MoviesPage extends StatelessWidget {
         ),
         body: BlocBuilder<MovieBloc, MovieState>(
           builder: (context, state) {
-            return GridView.builder(
+            return  state.getStatus==GetUsersStatus.loading
+                ?const Center(child: CircularProgressIndicator.adaptive(),)
+                :GridView.builder(
               itemCount: state.movies?.docs?.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,

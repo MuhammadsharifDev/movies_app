@@ -21,7 +21,9 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       backgroundColor: const Color(0xff15141F),
       body: BlocBuilder<MovieBloc, MovieState>(builder: (context, state) {
-        return CustomScrollView(
+        return state.getStatus==GetUsersStatus.loading
+            ?const Center(child: CircularProgressIndicator.adaptive(),)
+            :CustomScrollView(
           slivers: [
             SliverAppBar(
               leading: IconButton(
@@ -38,9 +40,9 @@ class _DetailPageState extends State<DetailPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => TrailerPage()));
+                            builder: (context) => TrailerPage(videoUrl: state.movie?.videos?.trailers?[0].url?.split('/').last.toString()??'',)));
                   },
-                  child: Text('Trailer'),
+                  child: const Text('Trailer'),
                 ),
               ],
               centerTitle: true,
@@ -52,12 +54,10 @@ class _DetailPageState extends State<DetailPage> {
                 background: Stack(children: [
                   CachedNetworkImage(
                     imageUrl:
-                        state.movie?.backdrop?.previewUrl.toString() ?? '',
+                    state.movie?.backdrop?.previewUrl.toString() ?? '',
                     fit: BoxFit.fitHeight,
-                    placeholder: (context, url) =>
-                        const Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                    const Icon(Icons.error),
                   ),
                 ]),
               ),
@@ -82,6 +82,7 @@ class _DetailPageState extends State<DetailPage> {
                       "О фильме",
                       style: TextStyle(
                           fontSize: 22,
+
                           fontWeight: FontWeight.w400,
                           color: Colors.white),
                     ),
